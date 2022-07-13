@@ -1,5 +1,7 @@
 module main
 
+import encoding.utf8
+
 struct Frequencies {
 	unigram []UnigramFrequency
 	bigram  []BigramFrequency
@@ -37,7 +39,7 @@ fn analyse(text string) ?Frequencies {
 	text_runes := text.runes()
 	for i := 0; i < text_runes.len; i++ {
 		chr := text_runes[i]
-		if chr == ` ` {
+		if should_skip(chr) {
 			continue
 		}
 		if chr in unigram_frequencies {
@@ -47,7 +49,7 @@ fn analyse(text string) ?Frequencies {
 				chr: chr
 			}
 		}
-		if text_runes.len <= i + 1 || text_runes[i + 1] == ` ` {
+		if text_runes.len <= i + 1 || should_skip(text_runes[i + 1]) {
 			continue
 		}
 		bigram := chr.str() + text_runes[i + 1].str()
@@ -58,7 +60,7 @@ fn analyse(text string) ?Frequencies {
 				chrs: [chr, text_runes[i + 1]]!
 			}
 		}
-		if text_runes.len <= i + 2 || text_runes[i + 2] == ` ` {
+		if text_runes.len <= i + 2 || should_skip(text_runes[i + 2]) {
 			continue
 		}
 		trigram := chr.str() + text_runes[i + 1].str() + text_runes[i + 2].str()
@@ -157,6 +159,11 @@ fn analyse(text string) ?Frequencies {
 
 fn is_alphabet_ascii(s string) bool {
 	return !s.bytes().any((it < 65 || it > 90) && (it < 97 || it > 122) && it != 32)
+}
+
+[inline]
+fn should_skip(r rune) bool {
+	return !utf8.is_letter(r) // utf8.is_control(r) || r == ` `
 }
 
 // maybe the compiler is smart enough to, in our case, inline the recursion.

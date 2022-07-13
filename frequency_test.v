@@ -208,35 +208,13 @@ fn test_bigram_non_ascii() ? {
 			test: 'पुनर्दर्शनाय'
 			result: [
 				BigramFrequency{
-					chrs: [`र`, `्`]!
-					freq: 2
-				},
-				BigramFrequency{
 					chrs: [`द`, `र`]!
 				},
 				BigramFrequency{
 					chrs: [`न`, `र`]!
 				},
 				BigramFrequency{
-					chrs: [`न`, `ा`]!
-				},
-				BigramFrequency{
-					chrs: [`प`, `ु`]!
-				},
-				BigramFrequency{
 					chrs: [`श`, `न`]!
-				},
-				BigramFrequency{
-					chrs: [`ा`, `य`]!
-				},
-				BigramFrequency{
-					chrs: [`ु`, `न`]!
-				},
-				BigramFrequency{
-					chrs: [`्`, `द`]!
-				},
-				BigramFrequency{
-					chrs: [`्`, `श`]!
 				},
 			]
 		},
