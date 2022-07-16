@@ -21,8 +21,10 @@ fn main() {
 		println(fp.usage())
 		return
 	}
-	// mutual exclusion
-	if (file.len == 0 && additional_args.len == 0) || (file.len > 0 && additional_args.len > 0) {
+	if file.len == 0 && additional_args.len == 0 {
+		println(fp.usage())
+		return
+	} else if file.len > 0 && additional_args.len > 0 { // mutual exclusion
 		eprintln('the input file and ciphertext argument are mutually exclusive')
 		println(fp.usage())
 		return

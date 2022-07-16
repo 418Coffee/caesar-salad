@@ -1,1 +1,1 @@
-v -o caesar-cipher -prod . 
+v -prod -cc clang -o caesar-cipher . 
