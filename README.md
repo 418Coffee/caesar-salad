@@ -72,7 +72,7 @@ Frequency analysis is the practice of counting letters in text. If you could col
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-If you would like to add an language you're free to do so. Find a reputable source of unigram, bigram and trigram frequencies of your language and add a function similair as is done in [`language.v`](https://github.com/418Coffee/caesar-salad/blob/main/language.v).
+If you would like to add a language you're free to do so. Find a reputable source of unigram, bigram and trigram frequencies of your language and add a function similar as is done in [`language.v`](https://github.com/418Coffee/caesar-salad/blob/main/language.v).
 
 ## License
 
